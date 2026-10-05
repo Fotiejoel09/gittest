@@ -3,6 +3,7 @@
 
 const int ledPin = 9;
 const int buzzerpin = 8;
+int test = 0;
   
 void setup() {
   // put your setup code here, to run once:
