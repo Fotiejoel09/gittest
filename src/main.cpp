@@ -1,18 +1,25 @@
 #include <Arduino.h>
-
 // put function declarations here:
-int myFunction(int, int);
 
+const int ledPin = 9;
+const int buzzerpin = 8;
+  
 void setup() {
   // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  pinMode(ledPin, OUTPUT);
+  pinMode(buzzerpin, OUTPUT);
 }
+
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  digitalWrite(ledPin, HIGH);  // change state of the LED by setting the pin to the HIGH voltage level
+  delay(2000);
+  tone(buzzerpin, 1000); // Send 1KHz sound signal... 
+  delay(2000); // ...for 2 sec                      // wait for a second                    // wait for a second
+  digitalWrite(ledPin, LOW);   // change state of the LED by setting the pin to the LOW voltage level
+  delay(100); 
+  noTone(buzzerpin); // Stop sound...
+  delay(1000); // ...for 1 sec
+
 }
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
-}
