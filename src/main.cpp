@@ -17,7 +17,6 @@ void loop() {
   }else
     mul();
 }
-
 void loop() {
   // Empty loop
 }
