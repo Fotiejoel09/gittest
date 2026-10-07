@@ -9,6 +9,7 @@ void setup() {
 }
 
 void loop() {
+  myFunction(10,11);
   // put your main code here, to run repeatedly:
 }
 
