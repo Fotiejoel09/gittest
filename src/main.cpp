@@ -1,7 +1,10 @@
 #include <Arduino.h>
 
 const int ledPin = 9;
-int test = 0;
+unsigned long time = millis();
+bool ledState = LOW;
+void blink();
+void mul();
 
 void setup()
 {
@@ -12,22 +15,28 @@ void setup()
 
 void loop()
 {
+  blink();
   int s_or_m;
   Serial.println("Select you're version say 1 to calculate sum or 2 for multiplication");
   do
   {
     while (Serial.available() == 0)
     {
+      // Wait for input
+      blink();
     }
-    s_or_m = parseInt();
+    s_or_m = Serial.parseInt();
 
-  } while (s_or_m != 1 || s_or_m != 2)
+  } while (s_or_m != 1 && s_or_m != 2);
 
-      if (s_or_m == 1)
+  if (s_or_m == 1)
   {
-    sum();
+    //sum();
   }
-  else mul();
+  else 
+  {
+    mul();
+  }
 }
 
 // Member 4: Multiplication function
@@ -38,6 +47,7 @@ void mul()
   while (Serial.available() == 0)
   {
     // Wait for input
+    blink();
   }
   float num1 = Serial.parseFloat();
 
@@ -46,6 +56,7 @@ void mul()
   while (Serial.available() == 0)
   {
     // Wait for input
+    blink();
   }
   float num2 = Serial.parseFloat();
 
@@ -57,8 +68,11 @@ void mul()
 
 void blink()
 {
-  digitalWrite(ledPin, HIGH); // change state of the LED by setting the pin to the HIGH voltage level
-  delay(1000);
-  digitalWrite(ledPin, LOW); // change state of the LED by setting the pin to the LOW voltage level
-  delay(1000);
+  unsigned long currentMillis = millis();
+  if(currentMillis - time >= 1000)
+  {
+    time = currentMillis;
+    ledState = !ledState;
+    digitalWrite(ledPin, ledState);
+  }
 }
