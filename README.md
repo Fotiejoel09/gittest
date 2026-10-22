@@ -1,8 +1,8 @@
-# Simple C++ Multiplication Program
+# C++ Multiplication Program
 
 A minimalist **C++ console application** that multiplies two numbers entered by the user and displays the result.
 
-## 🚀 Features
+## Features
 * Accepts two user-defined numbers (integer or floating-point).
 * Computes the product instantly.
 * Simple, clean, and well-commented source code.
