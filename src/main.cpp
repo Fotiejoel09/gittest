@@ -5,6 +5,7 @@ unsigned long time = millis();
 bool ledState = LOW;
 void blink();
 void mul();
+void sum();
 
 void setup()
 {
@@ -31,7 +32,7 @@ void loop()
 
   if (s_or_m == 1)
   {
-    //sum();
+    sum();
   }
   else 
   {
@@ -62,6 +63,32 @@ void mul()
 
   // Calculate and print result
   float result = num1 * num2;
+  Serial.print("Result: ");
+  Serial.println(result);
+}
+
+void sum()
+{
+  // Get first number
+  Serial.println("Enter first number:");
+  while (Serial.available() == 0)
+  {
+    // Wait for input
+    blink();
+  }
+  float num1 = Serial.parseFloat();
+
+  // Get second number
+  Serial.println("Enter second number:");
+  while (Serial.available() == 0)
+  {
+    // Wait for input
+    blink();
+  }
+  float num2 = Serial.parseFloat();
+
+  // Calculate and print result
+  float result = num1 + num2;
   Serial.print("Result: ");
   Serial.println(result);
 }
